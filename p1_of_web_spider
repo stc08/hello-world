@@ -1,0 +1,8 @@
+import requests
+header ={'User-Agent': 'Mozilla/5.0'}
+r = requests.get('https://www.jianshu.com/',headers= header)
+ree = requests.get('https://www.jianshu.com/robots.txt',headers= header)
+print(ree.encoding)
+print(r.text)
+print(ree.text)
+print(r.text[-1000:])
