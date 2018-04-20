@@ -1,2 +1,3 @@
 # hello-world
-beginning to study
+#beginning to study
+print('hello world')
