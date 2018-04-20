@@ -1,0 +1,21 @@
+import time    #进度条练习
+s=50   #调节总进度长度，同时关联开始结束文字两边的“-”号
+print('执行开始'.center(s//2,'-'))
+start=time.perf_counter()
+for i in range(s+1):
+    a = '■'* i
+    b = '□'*( s - i )
+    c = (i/s)*100
+    d = time.perf_counter()-start
+    print('\r{:^3.0f}%[{}{}]{:.2f}s'.format(c,a,b,d),end='')
+    time.sleep(0.2)     #调节时间快慢
+print('\n'+'执行结束'.center(s//2,'-'))
+
+#时间动态刷新
+import time
+while True:              #时间持续刷新，是否需要停止条件？整个程序停止才停？
+    tm = time.ctime()    #获取时间格式
+    move_t = tm.split(' ')   #分割成列表
+    ti = move_t[-2]           #取出时间元素
+    print('\r{0}'.format(ti),end='')     #持续打印，'/r'表示每次都回到当前行首，不换行，表示覆盖
+    time.sleep(1)              #刷新频率
