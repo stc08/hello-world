@@ -1,0 +1,150 @@
+
+for i in range(1,10):
+
+    for k in range(1,i+1):        #乘法表
+        q=k*i
+        print('{k}*{i}={q}'.format(k=k,i=i,q=q),end='  ')
+    print('\n')
+    for j in range(1,i+1):
+        q=i*j
+        if j==1 and i==1:
+            break
+        else:
+            print('{i}*{j}={q}'.format(i=i,j=j,q=q),end='  ')
+    if not j == 1 and not i == 1:
+         print('\n')
+import  math
+
+def sqrt(x,esp):  #平方根带精度
+    a = max(x,1)
+    ma = 1
+    mi = 0
+    b = a/2
+    while abs(b*b-x) > esp:
+       if b*b>x:
+           ma = b
+           b = (ma+mi)/2
+       else:
+           mi = b
+           b = (ma+mi)/2
+       # elif b * b = x :
+       #     pass
+    return b
+b=sqrt(0.81,0.0001)
+print(b)
+
+def quadratic(a,b,c):   求二次方程通解，需要用到上面的平方根函数
+    d=b*b-4*a*c
+    e = sqrt(d,0.0000000000001)
+    x1 = (-b+e)/(2*a)
+    x2 = (-b-e)/(2*a)
+    return (x1,x2)
+k=(1,2,1)
+j=quadratic(1,3,-40)
+print(j)
+
+
+def product(num):   #多个数字相乘
+    sum = 1
+    for i in num:
+        sum=sum*i
+    return sum
+def arg(num):        #多个数求平均数
+    n=len(num)
+    sum=0
+    for i in num:
+        sum=sum+i
+    return sum/n
+
+a=(1,2,3,4,5,6,7,8,9,10)
+b=product(a)
+c=arg(a)
+print(c)
+
+L1 = ['Hello', 'World', 18, 'Apple', None]    #列表生成式的作用
+L2=[s.lower() for s in [L1[0],L1[1],L1[3]]]   #选取L1中可用于lower()小写化的字符串并保存到L2
+print(L2)
+
+g=(x**2 for x in range(0,20))
+print(g)
+print(next(g))
+print(next(g))
+
+def fib():  #杨辉三角
+    a = [1]
+    b = [1]
+    n = 0
+    while n >=0:#这样可用next() 打印无穷结果，如换成 while n<max: 并把函数的位置参数加入max，则变为输入上限值打印有限结果
+        yield b #改成print(b)就变成函数，这个用yield则变成  生成器：generator。
+        for i in range(1, n+1):
+            b[i]=a[i]+a[i-1]
+        a = b + [1]
+        b = b + [1]
+        n = n + 1
+
+for i in fib(14): #生成器使用方法
+#     print(i)
+f = fib()
+print(next(f))
+print(next(f))
+print(next(f))
+print(next(f))
+print(next(f))
+print(next(f))
+
+def f(x):
+    return x*x
+r=map(f,[1,2,3,4,5,6,7,8,9])
+print(r)
+print(list(r))
+k=list(map(str,[1,2,3,4,5,6,7,8,9]))  #批量用函数处理数据
+print(k)
+
+def is_palindrome(n):
+    if str(n)[::-1]==str(n):
+        return n
+    else: pass
+
+output = filter(is_palindrome, range(1, 1000))
+print('1~1000:', list(output))
+if list(filter(is_palindrome, range(1, 200))) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101, 111, 121, 131, 141, 151, 161, 171, 181, 191]:
+    print('测试成功!')
+else:
+    print('测试失败!')
+
+
+def  byscort(x):
+    return  x[1]
+L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
+L1=sorted(L)
+L2=sorted(L,key=byscort,reverse=True)   #recerse=true 指反序
+print(L1)
+print(L2)
+
+x=input('随机次数：')
+from random import randint,choice
+n = 0
+b = []
+while n<int(x):
+    a = randint(1, 10)
+    n=n+1
+    b.append(int(a))
+print(b)
+c=choice(b)
+d=b.count(1)
+print(c,d)
+
+a=2  #只当a为0，空集，NONE，false时，b为True
+b=not a
+print(b)
+c='char var i fun'
+print(c.split(' '))
+
+a=['the', 'car']  #join 的用法
+b=' '.join(a)  #不能这样用？
+# b=a.join(' ')
+print(b)
+
+a="print('fsdfsdfs')"  #  ecal 的用法：去掉最外层的引号，然后执行，
+eval(a)
+
