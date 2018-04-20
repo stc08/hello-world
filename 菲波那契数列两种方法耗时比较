@@ -1,0 +1,29 @@
+# #比较菲波那契数列用递归和循环方法耗费的时间，递归用时极大，FOR循环用时极少
+import time
+def fib(n):                     #递归方法，内存堆栈
+    if n == 0 or n ==1:
+        return 1
+    else: return fib(n-1)+fib(n-2)
+
+def func(n,output=True):         #控制输出单个或整个列表
+    a=[]
+    for i in range(0,n):         #for循环方法计算菲波那契数列
+        if i == 0 or i == 1:
+            a.append(1)
+        else:
+            b=a[i-1]+a[i-2]
+            a.append(b)
+    if output==True:return a[n-1]   #单个数
+    if output==False:return a       #整个列表
+
+t =time.perf_counter()              #time.perf_counter 计算耗时
+r = func(5,False)
+print(r)
+t = time.perf_counter()-t
+print(t)
+
+tt = time.perf_counter()
+for i in range(0,30):               #当范围超过30，耗时陡升
+    print(fib(i),end=',')
+tt = time.perf_counter() - tt
+print(tt)
